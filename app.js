@@ -9,7 +9,8 @@
 var express = require('express'),
     cookieParser = require('cookie-parser'),//加载cookie模块
     app = express(),
-    mall = require('./routes/mall');
+    mall = require('./routes/mall'),
+    querystring = require('querystring');
 
 // 激活cookie,一次配置，全局通用
 app.use(cookieParser());
@@ -17,18 +18,19 @@ app.use(cookieParser());
 /**
  * 中间件
  * 截获跟目录下所有请求请求，包括404
+ * 统一url参数获取
+ * TODO 个别页面当没有固定参数时，跳转引导页
  * TODO 记录log？
  * TODO sessionFilter，用作拦截器？
  * TODO html请求时，根据***返回304，使用客户端缓存?
  * TODO 是否生成静态文件，直接返回静态文件？
  */
 app.use(function (req, res, next) {
-    console.log('write log');
-    console.log('sessionFilter');
+    //TODO 1.封装url参数（锚点，转码问题未解决）
+    var url = req.url.replace(/^.*\?/,'').replace(/#.*$/,'');
+    req.tgParams = querystring.parse(url);
     next();
 });
-
-
 
 app.get('/json',function(req,res,next){
     console.log("cookie: " + JSON.stringify(req.cookies));
@@ -41,10 +43,6 @@ app.get('/redirect',function(req,res,next){
     res.redirect("http://www.baidu.com");
 });
 
-app.use('/user', function (req, res, next) {
-    console.log('user zhong jian jian');
-    next();
-});
 app.get('/user',function(req,res,next){
     //跳转
     res.send("user")
@@ -56,7 +54,7 @@ app.use(express.static('public'));
 
 //设置模板路径
 app.set('views', './views');
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
     res.render('index', { title: 'Hey', message: 'Hello there!'});
