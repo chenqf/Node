@@ -7,13 +7,23 @@
  * 指定静态文件路径
  */
 var express = require('express'),
+    underscore = require('underscore'),
     cookieParser = require('cookie-parser'),//加载cookie模块
     app = express(),
-    mall = require('./routes/mall'),
-    querystring = require('querystring');
+    compression = require('compression'),//gzip
+    bodyParser = require('body-parser'),
+    config = require('./config/config'),
+    routers = require('./config/routers'),
+    i = 0,
+    length = routers.length;
 
-// 激活cookie,一次配置，全局通用
-app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cookieParser());// 激活cookie,一次配置，全局通用
+app.use(compression());//TODO gzip
+
+//设置全局变量，可在模板中直接使用
+app.locals._ = underscore;
 
 /**
  * 中间件
@@ -21,52 +31,35 @@ app.use(cookieParser());
  * 统一url参数获取
  * TODO 个别页面当没有固定参数时，跳转引导页
  * TODO 记录log？
- * TODO sessionFilter，用作拦截器？
- * TODO html请求时，根据***返回304，使用客户端缓存?
- * TODO 是否生成静态文件，直接返回静态文件？
  */
 app.use(function (req, res, next) {
-    //TODO 1.封装url参数（锚点，转码问题未解决）
-    var url = req.url.replace(/^.*\?/,'').replace(/#.*$/,'');
-    req.tgParams = querystring.parse(url);
+    if(req.hostname.indexOf(config.domain) >= 0){
+        res.header("Access-Control-Allow-Origin", config.domain);
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+        res.header("X-Powered-By",' 3.2.1');
+    }
     next();
 });
 
-app.get('/json',function(req,res,next){
-    console.log("cookie: " + JSON.stringify(req.cookies));
-    //設定HTTP Header
-    res.setHeader('Content-Type', 'application/json');
-    res.send({a:123,b:456});
-});
-app.get('/redirect',function(req,res,next){
-    //跳转
-    res.redirect("http://www.baidu.com");
-});
-
-app.get('/user',function(req,res,next){
-    //跳转
-    res.send("user")
-});
-
-//静态文件，可被直接访问，相同文件名，放在前面，优先级高,相同地址，静态文件优先级高于请求
-app.use(express.static('public/html'));
-app.use(express.static('public'));
+app.use(express.static('public/html'));//静态文件，可被直接访问，相同文件名，放在前面，优先级高,相同地址，静态文件优先级高于请求
+if(process.env.NODE_ENV === 'online'){
+    app.use(express.static('public',{maxAge:31536000000,etag:false}));//缓存365天，不启用ETag
+}else{
+    app.use(express.static('public'));//不适用缓存
+}
 
 //设置模板路径
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-app.get('/', function (req, res) {
-    res.render('index', { title: 'Hey', message: 'Hello there!'});
-});
-
 /**
  * 路由
- * 每个路由相当于controller
- * 配置RequestMapping
- * 需手动配置
  */
-app.use('/mall', mall);
+for(; i < length; i++){
+    app.use('/' + routers[i],require('./controller/' + routers[i]));
+}
+
 
 /*----------------------统一配置异常 start---------------------**/
 /**
@@ -91,7 +84,7 @@ app.use(function(err, req, res, next) {
 /*----------------------统一配置异常 end---------------------**/
 
 /*----------------------设置监听 start---------------------**/
-var server = app.listen(3000, function () {
+app.listen(config.port, function () {
 
 });
 /*----------------------设置监听 end---------------------**/

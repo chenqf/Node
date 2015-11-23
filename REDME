@@ -1,0 +1,9 @@
+app.js 应用,工作进程
+package.json 依赖模块
+config/ 配置文件
+views/ 试图模板
+public/ 静态文件
+common/ 跟业务相关的公共模块
+libs/ 跟业务无关的公共模块
+controllers/ 业务逻辑相关
+proxy/ 数据访问代理层
