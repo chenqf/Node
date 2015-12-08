@@ -11,5 +11,6 @@ HttpUtils.post({
         password:'3333'
     }
 }).then(function(data){
-    console.log(data)
+    console.log(data);
 });
+
