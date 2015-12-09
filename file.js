@@ -3,6 +3,7 @@
  */
 
 var fs = require('fs');
+var HttpUtils = require('./lib/HttpUtils');
 
 //删除文件
 function deleteFile(){
@@ -133,7 +134,7 @@ function allImage(){
 
 
 
-
+var nameList = [];
 var getRandomName = function(){
     var json = require('./wangMing.json');
     var getRandomArray = function() {
@@ -143,7 +144,7 @@ var getRandomName = function(){
         bai = parseInt(Number(Math.random() * 10));
         qian = parseInt(Number(Math.random() * 10));
         num = Number(String(qian) + String(bai) +String(shi) +String(ge));
-        if(num > 5882){
+        if(num > 5882 || nameList.indexOf(num) >= 0){
             return getRandomArray();
         }else{
             return num;
@@ -153,9 +154,86 @@ var getRandomName = function(){
     if(json[num]){
         return json[num];
     }else{
+        nameList.push(num)
         return getRandomName();
     }
 };
+
+
+var imageList = [];
+var getRandomImage = function(){
+    var json = require('./image.json');
+    var getRandomArray = function() {
+        var ge,shi,bai,qian,num;
+        ge = parseInt(Number(Math.random() * 10));
+        shi = parseInt(Number(Math.random() * 10));
+        bai = parseInt(Number(Math.random() * 10));
+        qian = parseInt(Number(Math.random() * 10));
+        num = Number(String(qian) + String(bai) +String(shi) +String(ge));
+        if(num > 2638 || imageList.indexOf(num) >= 0){
+            return getRandomArray();
+        }else{
+            return num;
+        }
+    };
+    var num = getRandomArray();
+    if(json[num]){
+        imageList.push(num);
+        return json[num];
+    }else{
+        return getRandomImage();
+    }
+};
+
+
+
+
+
+var createJson = function(num,memberId,activity){
+    var length = num || 300;
+    var array = [],
+        obj,
+        uuid,
+        nickname = '',
+        headimgurl;
+    for(var i = 0; i<length; i++){
+        obj = getRandomImage();
+        uuid = obj.openId;
+        nickname = getRandomName();
+        headimgurl = obj.image;
+        array.push({
+            activityProductId:activity,
+            uuid:uuid,
+            wechatName:JSON.stringify({nickname:nickname,headimgurl:headimgurl}),
+            memberSecId:memberId
+        })
+    }
+
+
+
+
+
+
+    HttpUtils.post({
+        url:'http://chenqf.51tiangou.com:8080/financing/admin/login',
+        data:{
+            username:'333',
+            password:'3333'
+        }
+    }).then(function(data){
+        console.log(data);
+    });
+
+
+
+
+
+
+    fs.writeFile('./shell.json',JSON.stringify(array),{encoding:'utf8'},function(error){
+        if(error) throw error;
+    });
+
+}
 
 
 var getImage = function(page){
@@ -204,7 +282,13 @@ var getImage = function(page){
 
 //getImage(100);
 
-getImage(85)
+//getImage(85)
+
+//127743 399
+
+// 13019426605  8DUrGBPpcxRpoUVYELM__A
+
+createJson(300,'8DUrGBPpcxRpoUVYELM__A',127743);
 
 
 
