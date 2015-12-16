@@ -104,7 +104,7 @@ function allImage(){
     var array = [];
     var json = [];
     var i;
-    for(i = 70; i<= 100; i++){
+    for(i = 1; i<= 11; i++){
         var flg = fs.existsSync('./image' + i + '.json');
         var file;
         if(flg){
@@ -122,17 +122,10 @@ function allImage(){
         }
     }
 
-    fs.writeFile('./image.json',JSON.stringify(array),{encoding:'utf8'},function(error){
+    fs.writeFile('./imagexxx.json',JSON.stringify(array),{encoding:'utf8'},function(error){
         if(error) throw error;
     });
 }
-
-
-
-
-
-
-
 
 var nameList = [];
 var getRandomName = function(){
@@ -199,7 +192,8 @@ var createJson = function(num,memberId,activity){
     for(var i = 0; i<length; i++){
         obj = getRandomImage();
         uuid = obj.openId;
-        nickname = getRandomName();
+        nickname = getRandomName() || '';
+        nickname = nickname.replace(/[^0-9a-zA-Z\u4e00-\u9fa5]/g,'');
         headimgurl = obj.image;
         array.push({
             activityProductId:activity,
@@ -208,26 +202,6 @@ var createJson = function(num,memberId,activity){
             memberSecId:memberId
         })
     }
-
-
-
-
-
-
-    HttpUtils.post({
-        url:'http://chenqf.51tiangou.com:8080/financing/admin/login',
-        data:{
-            username:'333',
-            password:'3333'
-        }
-    }).then(function(data){
-        console.log(data);
-    });
-
-
-
-
-
 
     fs.writeFile('./shell.json',JSON.stringify(array),{encoding:'utf8'},function(error){
         if(error) throw error;
@@ -242,7 +216,7 @@ var getImage = function(page){
     var startNum = (page - 1) * 100;
     var length = startNum + 100;
     var HttpUtils = require('./lib/HttpUtils.js');
-    var memberList = require('./member2.json').splice(40000,10000);
+    var memberList = require('./member3.json');
     var array = [];
     var memberIdList = [];
     for(var i = startNum; i<length; i++){
@@ -251,7 +225,7 @@ var getImage = function(page){
                 HttpUtils.get({
                     url:'http://item.51tiangou.com/barginRecord/shareDetail',
                     data:{
-                        activityProductId:127742,
+                        activityProductId:127744,
                         memberSecId:memberSecId
                     }
                 }).then(function(data){
@@ -267,11 +241,6 @@ var getImage = function(page){
                         fs.writeFile('./image' + String(page) + '.json',JSON.stringify(array),{encoding:'utf8'},function(error){
                             if(error) throw error;
                         });
-
-                        fs.writeFile('./image' + String(page) + '.json',JSON.stringify(array),{encoding:'utf8'},function(error){
-                            if(error) throw error;
-                        });
-
                     }
                 })
             },500)
@@ -288,7 +257,7 @@ var getImage = function(page){
 
 // 13019426605  8DUrGBPpcxRpoUVYELM__A
 
-createJson(300,'8DUrGBPpcxRpoUVYELM__A',127743);
+createJson(300,'iKI2xASDL-LUaKxSOeq1Cg',132760);
 
 
 

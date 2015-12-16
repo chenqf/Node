@@ -34,7 +34,7 @@ app.locals._ = underscore;
  */
 app.use(function (req, res, next) {
     if(req.hostname.indexOf(config.domain) >= 0){
-        res.header("Access-Control-Allow-Origin", config.domain);
+        res.header("Access-Control-Allow-Origin", '*');
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
         res.header("X-Powered-By",' 3.2.1');
