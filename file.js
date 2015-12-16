@@ -247,17 +247,8 @@ var getImage = function(page){
         })(memberList[i])
     }
 }
-//console.log(getRandomName());
 
-//getImage(100);
-
-//getImage(85)
-
-//127743 399
-
-// 13019426605  8DUrGBPpcxRpoUVYELM__A
-
-createJson(300,'iKI2xASDL-LUaKxSOeq1Cg',132760);
+createJson(600,'iKI2xASDL-LUaKxSOeq1Cg',132760);
 
 
 
