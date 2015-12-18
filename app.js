@@ -14,9 +14,11 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     config = require('./config/config'),
     routers = require('./config/routers'),
+    log = require('./config/log'),
     i = 0,
     length = routers.length;
 
+log.use(app);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());// 激活cookie,一次配置，全局通用
