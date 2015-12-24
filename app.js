@@ -1,5 +1,5 @@
 /**
- * TODO redis
+ *     redis
  * 疑问：相当于java中web.xml？
  * 项目入口
  * 配置服务
@@ -13,10 +13,8 @@ var express = require('express'),
     compression = require('compression'),//gzip
     bodyParser = require('body-parser'),
     config = require('./config/config'),
-    routers = require('./config/routers'),
-    log = require('./config/log'),
-    i = 0,
-    length = routers.length;
+    routers = require('./lib/routers'),
+    log = require('./config/log');
 
 log.use(app);
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -55,12 +53,9 @@ if(process.env.NODE_ENV === 'online'){
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-/**
- * 路由
- */
-for(; i < length; i++){
-    app.use('/' + routers[i],require('./controller/' + routers[i]));
-}
+//路由
+routers.init(app);
+
 
 
 /*----------------------统一配置异常 start---------------------**/
