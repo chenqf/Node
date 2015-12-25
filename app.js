@@ -1,14 +1,14 @@
 /**
  *     redis
- * ÒÉÎÊ£ºÏàµ±ÓÚjavaÖĞweb.xml£¿
- * ÏîÄ¿Èë¿Ú
- * ÅäÖÃ·şÎñ
- * Ö¸¶¨Ä£°åÀàĞÍ
- * Ö¸¶¨¾²Ì¬ÎÄ¼şÂ·¾¶
+ * ç–‘é—®ï¼šç›¸å½“äºjavaä¸­web.xmlï¼Ÿ
+ * é¡¹ç›®å…¥å£
+ * é…ç½®æœåŠ¡
+ * æŒ‡å®šæ¨¡æ¿ç±»å‹
+ * æŒ‡å®šé™æ€æ–‡ä»¶è·¯å¾„
  */
 var express = require('express'),
     underscore = require('underscore'),
-    cookieParser = require('cookie-parser'),//¼ÓÔØcookieÄ£¿é
+    cookieParser = require('cookie-parser'),//åŠ è½½cookieæ¨¡å—
     app = express(),
     compression = require('compression'),//gzip
     bodyParser = require('body-parser'),
@@ -19,18 +19,18 @@ var express = require('express'),
 log.use(app);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cookieParser());// ¼¤»îcookie,Ò»´ÎÅäÖÃ£¬È«¾ÖÍ¨ÓÃ
+app.use(cookieParser());// æ¿€æ´»cookie,ä¸€æ¬¡é…ç½®ï¼Œå…¨å±€é€šç”¨
 app.use(compression());//TODO gzip
 
-//ÉèÖÃÈ«¾Ö±äÁ¿£¬¿ÉÔÚÄ£°åÖĞÖ±½ÓÊ¹ÓÃ
+//è®¾ç½®å…¨å±€å˜é‡ï¼Œå¯åœ¨æ¨¡æ¿ä¸­ç›´æ¥ä½¿ç”¨
 app.locals._ = underscore;
 
 /**
- * ÖĞ¼ä¼ş
- * ½Ø»ñ¸úÄ¿Â¼ÏÂËùÓĞÇëÇóÇëÇó£¬°üÀ¨404
- * Í³Ò»url²ÎÊı»ñÈ¡
- * TODO ¸ö±ğÒ³Ãæµ±Ã»ÓĞ¹Ì¶¨²ÎÊıÊ±£¬Ìø×ªÒıµ¼Ò³
- * TODO ¼ÇÂ¼log£¿
+ * ä¸­é—´ä»¶
+ * æˆªè·è·Ÿç›®å½•ä¸‹æ‰€æœ‰è¯·æ±‚è¯·æ±‚ï¼ŒåŒ…æ‹¬404
+ * ç»Ÿä¸€urlå‚æ•°è·å–
+ * TODO ä¸ªåˆ«é¡µé¢å½“æ²¡æœ‰å›ºå®šå‚æ•°æ—¶ï¼Œè·³è½¬å¼•å¯¼é¡µ
+ * TODO è®°å½•logï¼Ÿ
  */
 app.use(function (req, res, next) {
     if(req.hostname.indexOf(config.domain) >= 0){
@@ -42,29 +42,29 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(express.static('public/html'));//¾²Ì¬ÎÄ¼ş£¬¿É±»Ö±½Ó·ÃÎÊ£¬ÏàÍ¬ÎÄ¼şÃû£¬·ÅÔÚÇ°Ãæ£¬ÓÅÏÈ¼¶¸ß,ÏàÍ¬µØÖ·£¬¾²Ì¬ÎÄ¼şÓÅÏÈ¼¶¸ßÓÚÇëÇó
+app.use(express.static('public/html'));//é™æ€æ–‡ä»¶ï¼Œå¯è¢«ç›´æ¥è®¿é—®ï¼Œç›¸åŒæ–‡ä»¶åï¼Œæ”¾åœ¨å‰é¢ï¼Œä¼˜å…ˆçº§é«˜,ç›¸åŒåœ°å€ï¼Œé™æ€æ–‡ä»¶ä¼˜å…ˆçº§é«˜äºè¯·æ±‚
 if(process.env.NODE_ENV === 'online'){
-    app.use(express.static('public',{maxAge:31536000000,etag:false}));//»º´æ365Ìì£¬²»ÆôÓÃETag
+    app.use(express.static('public',{maxAge:31536000000,etag:false}));//ç¼“å­˜365å¤©ï¼Œä¸å¯ç”¨ETag
 }else{
-    app.use(express.static('public'));//²»ÊÊÓÃ»º´æ
+    app.use(express.static('public'));//ä¸é€‚ç”¨ç¼“å­˜
 }
 
-//ÉèÖÃÄ£°åÂ·¾¶
+//è®¾ç½®æ¨¡æ¿è·¯å¾„
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-//Â·ÓÉ
+//è·¯ç”±
 routers.init(app);
 
 
 
-/*----------------------Í³Ò»ÅäÖÃÒì³£ start---------------------**/
+/*----------------------ç»Ÿä¸€é…ç½®å¼‚å¸¸ start---------------------**/
 /**
- * Òì³£´¦Àí·ÅÔÚ´úÂëµ×²¿
- * ÇëÇóÍ¨¹ıÖĞ¼ä¼ş²ã²ãµ÷ÓÃ
- * ÕÒµ½ÕæÊµµÄÒµÎñ´¦ÀíÊ±ÖĞ¶ÏÁ´Ê½µ÷ÓÃ
- * ÒµÎñ´¦Àí·¢ÉúÒì³£Ê±£¬Í¨¹ıµ÷ÓÃÏÂ²ãÖĞ¼ä¼şÕÒµ½Òì³£´¦ÀíÄ£¿é
- * 404Ê±ÕÒ²»µ½ÒµÎñ´¦Àí£¬»á½øÈëÍ¬Ò»ÅäÖÃµÄ404´¦Àí
+ * å¼‚å¸¸å¤„ç†æ”¾åœ¨ä»£ç åº•éƒ¨
+ * è¯·æ±‚é€šè¿‡ä¸­é—´ä»¶å±‚å±‚è°ƒç”¨
+ * æ‰¾åˆ°çœŸå®çš„ä¸šåŠ¡å¤„ç†æ—¶ä¸­æ–­é“¾å¼è°ƒç”¨
+ * ä¸šåŠ¡å¤„ç†å‘ç”Ÿå¼‚å¸¸æ—¶ï¼Œé€šè¿‡è°ƒç”¨ä¸‹å±‚ä¸­é—´ä»¶æ‰¾åˆ°å¼‚å¸¸å¤„ç†æ¨¡å—
+ * 404æ—¶æ‰¾ä¸åˆ°ä¸šåŠ¡å¤„ç†ï¼Œä¼šè¿›å…¥åŒä¸€é…ç½®çš„404å¤„ç†
  */
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -78,12 +78,12 @@ app.use(function(err, req, res, next) {
         error: err
     });
 });
-/*----------------------Í³Ò»ÅäÖÃÒì³£ end---------------------**/
+/*----------------------ç»Ÿä¸€é…ç½®å¼‚å¸¸ end---------------------**/
 
-/*----------------------ÉèÖÃ¼àÌı start---------------------**/
+/*----------------------è®¾ç½®ç›‘å¬ start---------------------**/
 app.listen(config.port, function () {
 
 });
-/*----------------------ÉèÖÃ¼àÌı end---------------------**/
+/*----------------------è®¾ç½®ç›‘å¬ end---------------------**/
 
 module.exports = app;

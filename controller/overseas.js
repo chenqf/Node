@@ -1,7 +1,7 @@
 var controller = require('../lib/Controller').factory();
 
 /**
- * Òì²½Í¬Ê±ÇëÇó¶à¸ö½Ó¿Ú
+ * å¼‚æ­¥åŒæ—¶è¯·æ±‚å¤šä¸ªæ¥å£
  */
 controller.get('/a.html',function(req,res){
     this.promise.all([
@@ -24,7 +24,7 @@ controller.get('/a.html',function(req,res){
 });
 
 /**
- * ÇëÇóÒ»¸ö½Ó¿Ú
+ * è¯·æ±‚ä¸€ä¸ªæ¥å£
  */
 controller.get('/b.html',function(req,res){
     this.Item.detail({
@@ -38,7 +38,7 @@ controller.get('/b.html',function(req,res){
 
 
 /**
- * ÇëÇóÇ¶Ì×½Ó¿Ú
+ * è¯·æ±‚åµŒå¥—æ¥å£
  */
 controller.get('/c.html',function(req,res){
     var that = this;

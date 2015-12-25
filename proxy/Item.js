@@ -15,14 +15,12 @@ if(process.env.NODE_ENV === 'online'){
 
 module.exports = new BaseProxy([
     {
-        fnName:'search',//商品列表
+        fnName:'search',//脡脤脝路脕脨卤铆
         method:'POST',
         url:baseUrl + '/front/listing/search'
     },
     {
-        fnName:'detail',//商品详情
+        fnName:'detail',//脡脤脝路脧锚脟茅
         url:baseUrl + '/front/listing/detailInfo'
     }
 ]);
-
-

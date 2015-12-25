@@ -4,16 +4,16 @@ log4js.configure({
         {
             type: 'console',
             category: "console"
-        }, //控制台输出
+        },
         {
             type: "dateFile",
             filename: 'logs/log.log',
             pattern: "_yyyy-MM-dd",
             alwaysIncludePattern: false,
             category: 'dateFileLog'
-        }//日期文件格式
+        }
     ],
-    replaceConsole: true,   //替换console.log
+    replaceConsole: true,   //锟芥换console.log
     levels:{
         dateFileLog: 'INFO'
     }
@@ -24,7 +24,7 @@ var dateFileLog = log4js.getLogger('dateFileLog');
 exports.logger = dateFileLog;
 
 exports.use = function(app) {
-    //页面请求日志,用auto的话,默认级别是WARN
+    //页锟斤拷锟斤拷锟斤拷锟斤拷志,锟斤拷auto锟侥伙拷,默锟较硷拷锟斤拷锟斤拷WARN
     //app.use(log4js.connectLogger(dateFileLog, {level:'auto', format:':method :url'}));
     app.use(log4js.connectLogger(dateFileLog, {level:'debug', format:':method :url'}));
 }

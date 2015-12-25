@@ -15,13 +15,11 @@ if(process.env.NODE_ENV === 'online'){
 
 module.exports = new BaseProxy([
     {
-        fnName:'query',//ÎÒµÄÓÅ»İÈ¯
+        fnName:'query',//æˆ‘çš„ä¼˜æƒ åˆ¸
         url:baseUrl + '/publics/couponCode/query'
     },
     {
-        fnName:'get',//»ñÈ¡ÓÅ»İÈ¯ÏêÇé
+        fnName:'get',//è·å–ä¼˜æƒ åˆ¸è¯¦æƒ…
         url:baseUrl + '/publics/couponCode/get'
     }
 ]);
-
-
