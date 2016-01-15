@@ -1,23 +1,23 @@
-app.js Ӧ��,��������
-package.json ����ģ��
-config/ �����ļ�
-views/ ��ͼģ��
-public/ ��̬�ļ�
-common/ ��ҵ����صĹ���ģ��
-libs/ ��ҵ���޹صĹ���ģ��
-controllers/ ҵ���߼����
-proxy/ ���ݷ��ʴ�����
+app.js 应用,工作进程
+package.json 依赖模块
+config/ 配置文件
+views/ 试图模板
+public/ 静态文件
+common/ 跟业务相关的公共模块
+libs/ 跟业务无关的公共模块
+controllers/ 业务逻辑相关
+proxy/ 数据访问代理层
 
 
-����ѧjs--��ʵ����--react
-1.��ʽȫ�ֱ�������������ȫ�ֱ�����ʵ��������ȫ�ֱ���window�ϵ����ԣ�����ͨ��delete������ɾ��
-2.[��]��չ����ԭ�ͣ������°汾��ECMAScript���÷�����������չ
-3.����ⲿ��ҵ�����ֻ�ܵ��ù������������ܵ���˽�з�����TODO�����ʵ�֣���
-4.��һְ�𣺣��෢�����ĵ�ԭ��Ӧ��ֻ��һ����
-5.����ԭ�򣺣�����ʵ�壨�࣬ģ�飬�����ȵȣ�Ӧ������չ���ţ����޸Ĺرգ�������ʵ��Ӧ���ڲ��޸ĵ�ǰ������չ��
-6.
-7.
-8.
-9.
+重新学js--夯实基础--react
+1.隐式全局变量不是真正的全局变量，实际上是在全局变量window上的属性，可以通过delete操作符删除
+2.[不]扩展内置原型，对于新版本的ECMAScript内置方法，可以扩展
+3.框架外部的业务代码只能调用公共方法，不能调用私有方法（TODO：如何实现？）
+4.单一职责：（类发生更改的原因应该只有一个）
+5.开闭原则：（软件实体（类，模块，方法等等）应当对扩展开放，对修改关闭，即软件实体应当在不修改的前提下扩展）
+6.(function baz() {}); // 函数表达式 不包含在全局变量中
+7.通过函数构造函数（Function constructor）创建的函数不能访问局部变量，只能访问全局变量
+8.代码eval的上下文与当前的调用上下文（calling context）拥有同样的作用域链。
+9.单例一般是用在系统间各种模式的通信协调上
 10.
 
