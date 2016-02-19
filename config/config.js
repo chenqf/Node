@@ -4,6 +4,7 @@
 
 var config = {
     "port":3000,
+    "relPath":'',
     "mail":{
         "username":"546710115@qq.com",
         "password":"cqf5115215473",

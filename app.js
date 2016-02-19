@@ -33,13 +33,18 @@ app.locals._ = underscore;
  * TODO 记录log？
  */
 app.use(function (req, res, next) {
-    if(req.hostname.indexOf(config.domain) >= 0){
+    var referer = req.headers['referer'];
+    if(referer && referer.indexOf(config.domain) >= 0){
         res.header("Access-Control-Allow-Origin", '*');
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
         res.header("X-Powered-By",' 3.2.1');
     }
+
+    console.log(req.originalUrl);
+
     next();
+
 });
 
 app.use(express.static('public/html'));//静态文件，可被直接访问，相同文件名，放在前面，优先级高,相同地址，静态文件优先级高于请求
@@ -54,7 +59,7 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 
 //路由
-routers.init(app);
+routers.init(app,{routerRelPath:config.relPath});
 
 
 
