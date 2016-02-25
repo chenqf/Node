@@ -1,0 +1,27 @@
+1.各种定位
+相对
+绝对
+fixed
+
+
+2.字体font-size,line-height
+line-height - font-size = 行间距
+div中没有文字，只有块级元素，将font-size设置为0，否则会有留白
+
+3.盒模型
+block:占据整行，每行只能有一个block
+inline：宽度由其中内容决定，每行可以有多个inline
+inline-block：宽度由内容决定，每行可以有多个inline-block，
+		并可以设置width，height，可以用于一行并列显示多列内容，
+		多列默认为底部对齐，可使用vertical-align修改对齐方式。
+box：-moz-box/-webkit-box,内部元素使用-moz-box-flex/-webkit-box-flex,指定所占剩余百分百
+
+4.列表
+list-style:对display为list-item起效，一般设置为none，不指定图标图像
+
+5.内容边框
+box-sizing：默认值为，高度宽度不计算内边距和外边距，border-box，内边距，外边距包含在宽度高度内
+
+6.后代选择器
+A B	  : A 的所有后代为 B 的元素
+A > B : A 的所有子元素为 B 的元素

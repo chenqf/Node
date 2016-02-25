@@ -1,0 +1,16 @@
+.bottom-smart-banner {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  width: 100%;
+  font-size: 0;
+}
+.bottom-smart-banner a {
+  display: block;
+}
+.bottom-smart-banner img {
+  width: 100%;
+}
+
+/*# sourceMappingURL=index.css.map */
