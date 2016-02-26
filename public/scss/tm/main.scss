@@ -1,0 +1,58 @@
+html, body {
+  font-family: Helvetica,sans-serif;
+  -webkit-text-size-adjust: none;
+}
+body{
+  background-color: #f0f0f0;
+  background-image: none;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+img{
+  border: 0;
+}
+ul,li,ol{
+  list-style: none;
+}
+a{
+  color: #000;
+  text-decoration: none;
+}
+.mobile-page{
+  position: relative;
+  min-width: 320px;
+  overflow: hidden;
+  font-size: 12px;
+}
+/*组件*/
+.component{
+  background-color: #fff;
+/*  background-clip: content-box;*/
+  overflow: hidden;
+  display: block;
+}
+/*盒布局*/
+.box , .flex{
+  box-sizing: border-box;
+  .cell{
+    flex: 1;
+    width: 0;
+    max-width: 100%;
+    flex-basis: 0;
+    display:block;
+    position: relative;
+    a{
+      background-color: #fff;
+      display:block;
+      height: auto;
+      text-align: center;
+      img{
+        display: block;
+        margin: 0 auto 5px;
+      }
+    }
+  }
+}
+

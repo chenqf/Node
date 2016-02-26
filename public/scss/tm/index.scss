@@ -12,3 +12,79 @@
     width: 100%;
   }
 }
+
+/*热点热卖*/
+.hot-banner {
+  padding: 10px 0 10px 0;
+  position: relative;
+}
+.hot-banner-left {
+  border-right: 1px solid #e7e7e7;
+  position: absolute;
+  img{
+    margin:0 5px 0 7px;
+  }
+}
+.hot-banner-center {
+  position: absolute;
+  left: 73px;
+  top: 20px;
+}
+.hot-banner-right {
+  padding-left: 102px;
+  height:40px;
+  .title{
+    height:18px;
+  }
+  .sub-title{
+    color: #ff2f2f;
+    height:18px;
+    line-height: 18px;
+    vertical-align: middle;
+  }
+}
+
+/*分隔*/
+.separate{
+  font-size: 14px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  .line{
+    display: inline-block;
+    height: 1px;
+    text-align: center;
+    width: 34px;
+    margin-bottom: 5px;
+  }
+  img{
+    margin-bottom: -2px;
+    display: inline;
+    height: 15px;
+    width: 15px;
+  }
+  .title{
+    box-sizing: border-box;
+    display: inline;
+    text-align: center;
+    border:0!important;
+  }
+  .color1{
+    color: #FF2E2E;
+    border-bottom: 1px solid #F6B7B7;
+  }
+  .color2{
+    color: #FF8000;
+    border-bottom: 1px solid #FFCC99;;
+  }
+  .color3{
+    color: #009F8A;
+    border-bottom: 1px solid #B4E1DC;
+  }
+}
+
+
+
+
+
+

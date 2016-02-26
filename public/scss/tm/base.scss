@@ -1,43 +1,36 @@
-body{
-  background-color: rgb(240, 240, 240);
-  background-image: none;
+.in_block{
+  display: inline-block;
 }
-*{
-  margin: 0;
-  padding: 0;
+.block{
+  display: block;
 }
-img{
-  border: 0;
+.inline{
+  display: inline;
 }
-ul,li,ol{
-  list-style: none;
-}
-a{
-  color: #000;
-  text-decoration: none;
-}
-/*盒布局*/
+
+/*-----------------------盒布局 start------------------*/
 .box , .flex{
-  display: flex;
-  box-sizing: border-box;
-  .cell{
-    flex: 1;
-    width: 0;
-    max-width: 100%;
-    flex-basis: 0;
-    display:block;
-    position: relative;
-    a{
-      display:block;
-      height: auto;
-      text-align: center;
-      img{
-        display: block;
-        margin: 0 auto 5px;
-      }
-    }
-  }
+  display:flex;
 }
+@for $i from 0 through 5{
+  .flex#{$i}{flex:$i}
+}
+.box.row,.flex.row{
+  flex-direction: row;
+}
+.box.row-reverse,.flex.row.row-reverse{
+  flex-direction: row-reverse;
+}
+.box.column,.flex.column{
+  flex-direction: column;
+}
+.box.column-reverse,.flex.row.column-reverse{
+  flex-direction: column-reverse;
+}
+/*-----------------------盒布局 end------------------*/
+
+
+
 /*多行，子项溢出到下一行*/
 .flex-wrap{
   flex-wrap:wrap;
@@ -50,10 +43,39 @@ a{
 .flex-wrap-re{
   flex-wrap: wrap-reverse;
 }
-/*盒布局子项占用比例*/
-@for $i from 1 through 5{
-  .flex#{$i}{flex:$i}
+/*边框*/
+.b1{
+  border: 1px solid #e7e7e7;
 }
+.bt1{
+  border-top: 1px solid #e7e7e7;
+}
+.bb1{
+  border-bottom: 1px solid #e7e7e7;
+}
+.bl1{
+  border-left: 1px solid #e7e7e7;
+}
+.br1{
+  border-right: 1px solid #e7e7e7;
+}
+/*定位*/
+.relative{
+  position: relative;
+}
+.absolute{
+  position: absolute;
+}
+.fixed{
+  position: fixed;
+}
+@for $i from -20 through 20{
+  .top#{$i}{top:1px * $i}
+  .bottom#{$i}{bottom:1px * $i}
+  .right#{$i}{right:1px * $i}
+  .left#{$i}{left:1px * $i}
+}
+
 /*宽度高度*/
 @for $i from 1 through 20{
   .w#{$i}{width:1px * $i}
@@ -61,17 +83,17 @@ a{
 }
 /*外边距*/
 @for $i from 1 through 10{
-  .m#{$i}{margin:1px * $i}
-  .mt#{$i}{margin-top:1px * $i}
-  .mb#{$i}{margin-bottom:1px * $i}
-  .ml#{$i}{margin-left:1px * $i}
-  .mr#{$i}{margin-right:1px * $i}
+  .m#{$i}{margin:1px * $i!important;}
+  .mt#{$i}{margin-top:1px * $i!important;}
+  .mb#{$i}{margin-bottom:1px * $i!important;}
+  .ml#{$i}{margin-left:1px * $i!important;}
+  .mr#{$i}{margin-right:1px * $i!important;}
 
-  .p#{$i}{padding:1px * $i}
-  .pt#{$i}{padding-top:1px * $i}
-  .pb#{$i}{padding-bottom:1px * $i}
-  .pl#{$i}{padding-left:1px * $i}
-  .pr#{$i}{padding-right:1px * $i}
+  .p#{$i}{padding:1px * $i!important;}
+  .pt#{$i}{padding-top:1px * $i!important;}
+  .pb#{$i}{padding-bottom:1px * $i!important;}
+  .pl#{$i}{padding-left:1px * $i!important;}
+  .pr#{$i}{padding-right:1px * $i!important;}
 }
 /*自号*/
 @for $i from 12 through 15{
