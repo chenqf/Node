@@ -1,3 +1,15 @@
 shadow 阴影 [ˈʃædoʊ] 筛都
 
+transform 改变变换
+
+rotate  旋转 [rəʊˈteɪt]
+
+scale 比例 [skeɪl]
+
+translate 移动 [trænsˈleɪt]
+
+--------------------------------------
+
+transitions 过渡 [træn'zɪʃnz]
+
 

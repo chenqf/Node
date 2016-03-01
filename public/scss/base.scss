@@ -1,0 +1,182 @@
+.in_block{
+  display: inline-block!important;
+}
+.block{
+  display: block!important;
+}
+.inline{
+  display: inline!important;
+}
+
+/*-----------------------盒布局 start------------------*/
+.box , .flex{
+  display:flex!important;
+}
+@for $i from 0 through 5{
+  .flex#{$i}{flex:$i!important}
+}
+.box.row,.flex.row{
+  flex-direction: row!important;
+}
+.box.row-reverse,.flex.row.row-reverse{
+  flex-direction: row-reverse!important;
+}
+.box.column,.flex.column{
+  flex-direction: column!important;
+}
+.box.column-reverse,.flex.row.column-reverse{
+  flex-direction: column-reverse!important;
+}
+/*-----------------------盒布局 end------------------*/
+
+
+
+
+/*------------------------定位 start-----------------*/
+.relative{
+  position: relative!important;
+}
+.absolute{
+  position: absolute!important;
+}
+.fixed{
+  position: fixed!important;
+}
+.left{
+  float:left!important;
+}
+.right{
+  float:right!important;
+}
+@for $i from -20 through 20{
+  .top#{$i}{top:1px * $i!important}
+  .bottom#{$i}{bottom:1px * $i!important}
+  .right#{$i}{right:1px * $i!important}
+  .left#{$i}{left:1px * $i!important}
+}
+
+@for $i from 1 through 10{
+  .m#{$i}{margin:1px * $i!important;}
+  .mt#{$i}{margin-top:1px * $i!important;}
+  .mb#{$i}{margin-bottom:1px * $i!important;}
+  .ml#{$i}{margin-left:1px * $i!important;}
+  .mr#{$i}{margin-right:1px * $i!important;}
+
+  .p#{$i}{padding:1px * $i!important;}
+  .pt#{$i}{padding-top:1px * $i!important;}
+  .pb#{$i}{padding-bottom:1px * $i!important;}
+  .pl#{$i}{padding-left:1px * $i!important;}
+  .pr#{$i}{padding-right:1px * $i!important;}
+}
+
+/*------------------------定位 start-----------------*/
+
+
+/*------------------------文字 start-----------------*/
+
+@for $i from 12 through 15{
+  .fs#{$i}{font-size:1px * $i!important}
+}
+
+/*------------------------文字 end-----------------*/
+
+
+
+/*-----------------------宽度高度 start-------------*/
+@for $i from 1 through 20{
+  .w#{$i}{width:1px * $i!important}
+  .h#{$i}{height:1px * $i!important}
+}
+.wh100{
+  width:100%!important;
+}
+.hh100{
+  height:100%!important;
+}
+/*-----------------------宽度高度 end-------------*/
+
+/*----------------------边框 start-----------------*/
+.border{
+  border: 1px solid #e7e7e7!important;
+}
+.border-top{
+  border-top: 1px solid #e7e7e7!important;
+}
+.border-bottom{
+  border-bottom: 1px solid #e7e7e7!important;
+}
+.border-left{
+  border-left: 1px solid #e7e7e7!important;
+}
+.border-right{
+  border-right: 1px solid #e7e7e7!important;
+}
+@for $i from 0 through 5{
+  .b#{$i}{border:1px * $i!important}
+  .bt#{$i}{border-top:1px * $i!important}
+  .bb#{$i}{border-bottom:1px * $i!important}
+  .bl#{$i}{border-left:1px * $i!important}
+  .br#{$i}{border-right:1px * $i!important}
+}
+
+/*----------------------边框 end------------------*/
+
+
+/*----------------------动画 start ----------------*/
+//旋转
+.rotate45{
+  transform: rotate(45deg);
+}
+.rotate-45{
+  transform: rotate(-45deg);
+}
+.rotate90{
+  transform: rotate(90deg);
+}
+.rotate-90{
+  transform: rotate(-90deg);
+}
+.rotate135{
+  transform: rotate(135deg);
+}
+.rotate-135{
+  transform: rotate(-135deg);
+}
+.rotate-180{
+  transform: rotate(-180deg);
+}
+.rotate180{
+  transform: rotate(180deg);
+}
+
+//缩放
+@for $i from 1 through 9{
+  .scale_#{$i}{transform: scale(1 /10 * $i)!important}
+  .scale_h_#{$i}{transform: scale(1 /10 * $i,1)!important}
+  .scale_v_#{$i}{transform: scale(1,1 /10 * $i)!important}
+}
+@for $i from 2 through 10{
+  .scale#{$i}{transform: scale(1 * $i)!important}
+  .scale_h#{$i}{transform: scale(1 * $i,1)!important}
+  .scale_v#{$i}{transform: scale(1,1 * $i)!important}
+}
+
+
+/*----------------------动画 end ----------------*/
+
+
+
+/*背景*/
+.b_red{
+  background: red;
+}
+.b_blue{
+  background: blue;
+}
+.b_yellow{
+  background: yellow;
+}
+.b_yellow1{
+  background: yellow;
+}
+

@@ -25,3 +25,9 @@ box-sizing：默认值为，高度宽度不计算内边距和外边距，border-
 6.后代选择器
 A B	  : A 的所有后代为 B 的元素
 A > B : A 的所有子元素为 B 的元素
+
+7.transform
+使用transform 对图形进行变性时，都是对图形的中心点为依据，进行变形的
+transform-origin 改变基准点
+
+8.transitions
