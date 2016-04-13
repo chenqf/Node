@@ -1,0 +1,61 @@
+@charset "UTF-8";
+html, body {
+  font-family: Helvetica,sans-serif;
+  -webkit-text-size-adjust: none; }
+
+body {
+  background-color: #f0f0f0;
+  background-image: none; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+img {
+  border: 0; }
+
+ul, li, ol {
+  list-style: none; }
+
+a {
+  color: #000;
+  text-decoration: none; }
+
+.mobile-page {
+  position: relative;
+  min-width: 320px;
+  overflow: hidden;
+  font-size: 12px; }
+
+/*组件*/
+.component {
+  background-color: #fff;
+  /*  background-clip: content-box;*/
+  overflow: hidden;
+  display: block; }
+
+/*盒布局*/
+.box, .flex {
+  box-sizing: border-box; }
+  .box .cell, .flex .cell {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: 0;
+    max-width: 100%;
+    -webkit-flex-basis: 0;
+        -ms-flex-preferred-size: 0;
+            flex-basis: 0;
+    display: block;
+    position: relative; }
+    .box .cell a, .flex .cell a {
+      background-color: #fff;
+      display: block;
+      height: auto;
+      text-align: center; }
+      .box .cell a img, .flex .cell a img {
+        display: block;
+        margin: 0 auto 5px; }
+
+/*# sourceMappingURL=main.css.map */

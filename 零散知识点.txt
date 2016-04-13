@@ -31,3 +31,10 @@ A > B : A 的所有子元素为 B 的元素
 transform-origin 改变基准点
 
 8.transitions
+
+9.width padding margin
+
+
+10.	浮动的缺陷
+	父元素高度塌陷，影响兄弟元素的位置。
+

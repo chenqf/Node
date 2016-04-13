@@ -8,8 +8,12 @@ scale 比例 [skeɪl]
 
 translate 移动 [trænsˈleɪt]
 
---------------------------------------
-
 transitions 过渡 [træn'zɪʃnz]
+
+reduce      减少 [rɪˈdju:s]
+
+compile     编译  [kəmˈpail]
+
+
 
 

@@ -54,6 +54,7 @@ if(process.env.NODE_ENV === 'online'){
     app.use(express.static('public'));//不适用缓存
 }
 
+
 //设置模板路径
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -92,3 +93,8 @@ app.listen(config.port, function () {
 /*----------------------设置监听 end---------------------**/
 
 module.exports = app;
+
+
+
+
+
